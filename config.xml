@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.muveasy.client" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Movers</name>
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="orientation" value="portrait" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <description>
+        Movers mobile application.
+    </description>
+    <author email="lgutierrez@turpialdev.com" href="http://www.turpialdev.com">
+        Apache Cordova Team - Turpial Develovpers Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" subdomains="true" browserOnly="true" />
+    <platform name="android">
+        <icon src="www/img/android/icon/_0000s_0004_48.png" density="ldpi" />
+        <icon src="www/img/android/icon/_0000s_0002_72.png" density="mdpi" />
+        <icon src="www/img/android/icon/_0000s_0001_96.png" density="hdpi" />
+        <icon src="www/img/android/icon/_0000s_0000_144.png" density="xhdpi" />
+
+        <splash src="www/img/android/screen/640x960.png" density="port-ldpi"/>
+        <splash src="www/img/android/screen/768x1024.png" density="port-mdpi"/>
+        <splash src="www/img/android/screen/1280x2272.png" density="port-hdpi"/>
+        <splash src="www/img/android/screen/1536x2048.png" density="port-xhdpi"/>
+    </platform>
+</widget>

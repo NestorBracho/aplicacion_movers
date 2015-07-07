@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+        <title>Muv</title>
+    </head>
+    <body>
+        <!--<input type="hidden" id="urlapp" value="http://movers.uzeke.webfactional.com/app_request/"/>-->
+        <input type="hidden" id="urlapp" value="https://muveasy.com/app_request/"/>
+        <!--<input type="hidden" id="urlapp" value="http://192.168.1.101:8000/app_request/"/>-->
+
+        <div class="banner" style="display: none;">
+            <div style="width: 100%;display:table; margin-left: 0px; margin-right: 0px; float: none; height: 46px;">
+               <div style="width: 17%; display: table-cell; vertical-align: middle; float: none; text-align: center;">
+                   <img class="btn-back" src="img/Icons/OrangeArrowLeft.png" style="height:32px;" />
+               </div>
+               <div class="logo-place" style="width: 66%; display: table-cell; vertical-align: middle; float: none; text-align: center;">
+                   <img src="img/logo.png" class="logo" />
+               </div>
+               <div style="width: 17%; display: table-cell; vertical-align: middle; float: none; text-align: center;">
+                   <img class="btn-menu-link" src="img/Icons/3_OrangeSquares.png" style="height:46px;" />
+               </div>
+           </div>
+        </div>
+
+        <div id="principal">
+            <!--<div class="barra-marron"></div>-->
+            <div class="bg-movers">
+                <div style="text-align: center; margin-top: 30px;">
+                    <img src="img/logoo_220.png" height="170px"/>
+                </div>
+                <span class="moving-made-easy" style="bottom: 150px">Loading...</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div style="max-height: 40px; text-align: center; padding-top: 20px;">
+                <label class="fancy-label footer-label">
+                    <!--© 2015 Müv Denver Inc.-->
+                </label>
+            </div>
+        </div>
+
+        <div class="modal fade" id="id-modal-alert-disp" tabindex="-1" role="dialog" aria-labelledby="Alert" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header alert-title"></div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 alert-content"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <a class="btn btn-block btn-primary" data-dismiss="modal">CONTINUE</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/spin.min.js"></script>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/PushNotification.js"></script>
+        <script type="text/javascript" src="js/jquery.spin.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCNDjO_xC-ro97t6uJeubwr2-oF_1lFX_A&sensor=false"></script>
+        <script type="text/javascript">
+            //app.initialize();
+        </script>
+    </body>
+</html>

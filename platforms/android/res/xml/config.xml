@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.muveasy.client" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="Accelerometer">
+        <param name="android-package" value="org.apache.cordova.devicemotion.AccelListener" />
+    </feature>
+    <feature name="Compass">
+        <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="PushPlugin">
+        <param name="android-package" value="com.plugin.gcm.PushPlugin" />
+    </feature>
+    <feature name="FacebookConnectPlugin">
+        <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
+    </feature>
+    <access origin="https://m.facebook.com" />
+    <access origin="https://graph.facebook.com" />
+    <access origin="https://api.facebook.com" />
+    <access origin="https://*.fbcdn.net" />
+    <access origin="https://*.akamaihd.net" />
+    <icon density="ldpi" src="www/img/android/icon/_0000s_0004_48.png" />
+    <icon density="mdpi" src="www/img/android/icon/_0000s_0002_72.png" />
+    <icon density="hdpi" src="www/img/android/icon/_0000s_0001_96.png" />
+    <icon density="xhdpi" src="www/img/android/icon/_0000s_0000_144.png" />
+    <splash density="port-ldpi" src="www/img/android/screen/640x960.png" />
+    <splash density="port-mdpi" src="www/img/android/screen/768x1024.png" />
+    <splash density="port-hdpi" src="www/img/android/screen/1280x2272.png" />
+    <splash density="port-xhdpi" src="www/img/android/screen/1536x2048.png" />
+    <name>Movers</name>
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="orientation" value="portrait" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <description>
+        Movers mobile application.
+    </description>
+    <author email="lgutierrez@turpialdev.com" href="http://www.turpialdev.com">
+        Apache Cordova Team - Turpial Develovpers Team
+    </author>
+    <content src="index.html" />
+    <access browserOnly="true" origin="*" subdomains="true" />
+</widget>
