@@ -227,7 +227,7 @@ var app = {
     firstUserView: function(){
     
         $("#principal").html('<div class="bg-movers">' +
-            /*'<div class="barra-marron"></div>' +*/
+            '<div class="barra-marron"></div>' +
             '<div style="text-align: center; margin-top: 30px;">' +
                 '<img src="img/logoo_220.png" height="170px"/>' +
             '</div>' +
