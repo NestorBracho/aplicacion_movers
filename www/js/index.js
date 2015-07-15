@@ -233,7 +233,6 @@ var app = {
             '</div>' +
             '<div class="footer-test btn-group">' +
                 '<a class="btn btn-first-view login">Log in</a>' +
-                '<a class="btn btn-first-view signup">Sign Up</a>' +
             '</div>' +
         '</div>');
         
@@ -257,15 +256,13 @@ var app = {
         });
         
         $(".login").on("click", app.loginView);
-        
-        $(".signup").on("click", app.signUpView);
     
     },
 
     loginView: function(){
 
         $("#principal").html('<div style="background-color: #3B5998; max-height: 50px;">' +
-            '<a class="btn btn-fb">Log in with Facebook</a>' +
+            '<a class="btn nxt-btn" style="margin-top: 0px; background-color: #1dbb9c;">Log in with email</a>' +
         '</div>' +
         '<div class="container">' +
             '<div class="row">' +
@@ -282,7 +279,10 @@ var app = {
         '</div>' +
         '<a class="btn btn-primary nxt-btn login">Log in</a>' +
         '<div style="text-align: center;">' +
-            '<label class="fancy-label f-pass">Forgot your password?</label>' +
+            '<label class="fancy-label signup">Don\'t have an account?</label>' +
+            '<p>' +
+                '<label class="fancy-label f-pass">Forgot your password?</label>' +
+            '</p>' +
         '</div>');
 
         $(function(){    //init
@@ -317,6 +317,16 @@ var app = {
             url = url[0];
 
             window.open(url + "/user/password/reset/", "_system");
+
+        });
+
+        $(".signup").on("click", function(){
+
+            var url = $("#urlapp").val();
+            url = url.split("/app_request/");
+            url = url[0];
+
+            window.open(url + "/client/sign_up/", "_system");
 
         });
 
@@ -2151,206 +2161,231 @@ var app = {
 
     resumeView: function(){
 
-        $("#principal").html('<div class="background-fade-test"></div>' +
-        '<div class="sub-banner">Double check your move.</div>' +
-        '<div style="margin-top: 50px; background-color: #29180F;" class="container">' +
-            '<div class="row">' +
-                '<div class="col-xs-12">' +
-                    '<div class="panel panel-default">' +
-                        '<div class="panel-body">' +
-                            '<p>' +
-                                '<b>Full Name: </b>' +
-                                '<span class="client-name"></span>' +
-                            '</p>' +
-                            '<p>' +
-                                '<b>Phone Number: </b>' +
-                                '<span class="client-phone"></span>' +
-                            '</p>' +
-                            '<p>' +
-                                '<b>Date Time: </b>' +
-                                '<span class="date"></span>' +
-                            '</p>' +
-                            '<p>' +
-                                '<b>Number Of Hours: </b>' +
-                                '<span class="hours"></span>' +
-                            '</p>' +
-                            '<p>' +
-                                '<b>Minimum Crew Size: </b>' +
-                                '<span class="crew"></span>' +
-                            '</p>' +
-                            '<p>' +
-                                '<b>Type Of Move: </b>' +
-                                '<span class="type"></span>' +
-                            '</p>' +
-                            '<p>' +
-                                '<b>Moving Size: </b>' +
-                                '<span class="size"></span>' +
-                            '</p>' +
-                            '<div class="departure-block">' +
+        var url = $("#urlapp").val();
+        var size_of_crew = localStorage.getItem("crew");
+        var hours = localStorage.getItem("hours");
+        var move_type = localStorage.getItem("type");
+        var truck = localStorage.getItem("truck");
+
+        if(move_type == "full"){
+
+            move_type = "Full";
+
+        }
+
+        $.ajax({
+
+            url: url + 'request_calculate_billing',
+            type: 'GET',
+            data: { 'size_of_crew': size_of_crew, 'hours': hours, 'type': move_type, 'truck': truck }
+
+        }).done(function(data){
+
+            $("#principal").html('<div class="background-fade-test"></div>' +
+            '<div class="sub-banner">Double check your move.</div>' +
+            '<div style="margin-top: 50px; background-color: #29180F;" class="container">' +
+                '<div class="row">' +
+                    '<div class="col-xs-12">' +
+                        '<div class="panel panel-default">' +
+                            '<div class="panel-body">' +
                                 '<p>' +
-                                    '<b>Departure Address: </b>' +
-                                    '<span class="departure"></span>' +
+                                    '<b>Full Name: </b>' +
+                                    '<span class="client-name"></span>' +
                                 '</p>' +
-                            '</div>' +
-                            '<div class="arrival-block">' +
                                 '<p>' +
-                                    '<b>Arrival Address: </b>' +
-                                    '<span class="arrival"></span>' +
+                                    '<b>Phone Number: </b>' +
+                                    '<span class="client-phone"></span>' +
                                 '</p>' +
+                                '<p>' +
+                                    '<b>Date Time: </b>' +
+                                    '<span class="date"></span>' +
+                                '</p>' +
+                                '<p>' +
+                                    '<b>Number Of Hours: </b>' +
+                                    '<span class="hours"></span>' +
+                                '</p>' +
+                                '<p>' +
+                                    '<b>Minimum Crew Size: </b>' +
+                                    '<span class="crew"></span>' +
+                                '</p>' +
+                                '<p>' +
+                                    '<b>Type Of Move: </b>' +
+                                    '<span class="type"></span>' +
+                                '</p>' +
+                                '<p>' +
+                                    '<b>Moving Size: </b>' +
+                                    '<span class="size"></span>' +
+                                '</p>' +
+                                '<div class="departure-block">' +
+                                    '<p>' +
+                                        '<b>Departure Address: </b>' +
+                                        '<span class="departure"></span>' +
+                                    '</p>' +
+                                '</div>' +
+                                '<div class="arrival-block">' +
+                                    '<p>' +
+                                        '<b>Arrival Address: </b>' +
+                                        '<span class="arrival"></span>' +
+                                    '</p>' +
+                                '</div>' +
                             '</div>' +
                         '</div>' +
                     '</div>' +
-                '</div>' +
-                '<div class="form-group" align="center" style="text-align: center;">' +
-                    '<label class="fancy-label" style="padding: 7px;">Payment Information:</label>' +
-                '</div>' +
-                '<div class="col-xs-12">' +
-                    '<div class="panel panel-default">' +
-                        '<div class="panel-body">' +
-                            '<p>' +
-                                '<b>Travel Charge: </b>' +
-                                '$<span class="travle"></span>' +
-                            '</p>' +
-                            '<p>' +
-                                '<b>Est. Moving Price: </b>' +
-                                '$<span class="estimate"></span>' +
-                            '</p>' +
-                            '<div class="truck-block">' +
+                    '<div class="form-group" align="center" style="text-align: center;">' +
+                        '<label class="fancy-label" style="padding: 7px;">Payment Information:</label>' +
+                    '</div>' +
+                    '<div class="col-xs-12">' +
+                        '<div class="panel panel-default">' +
+                            '<div class="panel-body">' +
                                 '<p>' +
-                                    '<b>Truck: </b>' +
-                                    '$<span class="truck"></span>' +
+                                    '<label>Amount Due:</label>' +
+                                    '<ul>' +
+                                        'Travel Charge: ' +
+                                        '$<span class="travle"></span>' +
+                                    '</ul>' +
+                                '</p>' +
+                                '<p>' +
+                                    '<label>Remaining Balance:</label>' +
+                                    '<ul>' +
+                                        'Est. Moving Price: ' +
+                                        '$<span class="estimate"></span>' +
+                                        '<br>' +
+                                        '<div class="truck-block">' +
+                                            'Truck: ' +
+                                            '$<span class="truck"></span>' +
+                                            '<br>' +
+                                        '</div>' +
+                                        '<span>Due at completion of move</span>' +
+                                    '</ul>' +
                                 '</p>' +
                             '</div>' +
-                            '<p>' +
-                                '<b>Total Fee Approx.: </b>' +
-                                '$<span class="total"></span>' +
-                            '</p>' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
             '</div>' +
-        '</div>' +
-        '<a class="btn btn-block nxt-btn">Next</a>');
+            '<a class="btn btn-block nxt-btn">Next</a>');
 
-        var disp = {
+            var disp = {
 
-            load: function(){
+                load: function(){
 
-                var dep_add = localStorage.getItem("departure");
+                    var dep_add = localStorage.getItem("departure");
 
-                dep_add = dep_add.split("||");
-                dep_add = dep_add[2] + ', ' + dep_add[3] + ', ' + dep_add[4] + ', ' + dep_add[5];
+                    dep_add = dep_add.split("||");
+                    dep_add = dep_add[2] + ', ' + dep_add[3] + ', ' + dep_add[4] + ', ' + dep_add[5];
 
-                $(".departure").html(dep_add);
+                    $(".departure").html(dep_add);
 
 
-            },
+                },
 
-            unload:function(){
+                unload:function(){
 
-                var arr_add= localStorage.getItem("arrival");
+                    var arr_add= localStorage.getItem("arrival");
 
-                arr_add = arr_add.split("||");
-                arr_add = arr_add[2] + ', ' + arr_add[3] + ', ' + arr_add[4] + ', ' + arr_add[5];
+                    arr_add = arr_add.split("||");
+                    arr_add = arr_add[2] + ', ' + arr_add[3] + ', ' + arr_add[4] + ', ' + arr_add[5];
 
-                $(".arrival").html(arr_add);
+                    $(".arrival").html(arr_add);
 
-            }
-        };
+                }
+            };
 
-        $(function(){   //init
+            $(function(){   //init
 
-            var type = localStorage.getItem("type");
-            var date = localStorage.getItem("date");
-            var time = localStorage.getItem("time");
-            var hours = localStorage.getItem("hours");
-            var size = localStorage.getItem("size");
-            var name = localStorage.getItem("name");
-            var phone = localStorage.getItem("phone");
-            var total, truck;
-            var crew = parseInt(localStorage.getItem("crew"));
+                var type = localStorage.getItem("type");
+                var date = localStorage.getItem("date");
+                var time = localStorage.getItem("time");
+                var hours = localStorage.getItem("hours");
+                var size = localStorage.getItem("size");
+                var name = localStorage.getItem("name");
+                var phone = localStorage.getItem("phone");
+                var total, truck;
+                var crew = parseInt(localStorage.getItem("crew"));
 
-            var month = date.split("-");
-            var year = month[0];
-            var day = month[2];
+                var month = date.split("-");
+                var year = month[0];
+                var day = month[2];
 
-            month = month[1];
-            month = app.months(month);
+                month = month[1];
+                month = app.months(month);
 
-            date = month + '. ' + day + ', ' + year;
+                date = month + '. ' + day + ', ' + year;
 
-            var time_full = date + " at " + time;
-            size = size.replace(/-/g, ' ');
+                var time_full = date + " at " + time;
+                size = size.replace(/-/g, ' ');
 
-            localStorage.setItem("actual", "resumeView");
+                localStorage.setItem("actual", "resumeView");
 
-            $(".date").html(time_full);
-            $(".size").html(size);
-            $(".hours").html(hours);
-            $(".crew").html(crew);
-            $(".type").html(type);
-            $(".client-name").html(name);
-            $(".client-phone").html(phone);
+                $(".date").html(time_full);
+                $(".size").html(size);
+                $(".hours").html(hours);
+                $(".crew").html(crew);
+                $(".type").html(type);
+                $(".client-name").html(name);
+                $(".client-phone").html(phone);
 
-            if(type == "load"){
+                if(type == "load"){
 
-                $(".arrival-block").hide();
-                disp.load();
+                    $(".arrival-block").hide();
+                    disp.load();
 
-            }else if(type == "unload"){
+                }else if(type == "unload"){
 
-                $(".departure-block").hide();
-                disp.unload();
+                    $(".departure-block").hide();
+                    disp.unload();
 
-            }else{
+                }else{
 
-                disp.load();
-                disp.unload();
+                    disp.load();
+                    disp.unload();
 
-            }
+                }
 
-            if(localStorage.getItem("truck")){
+                if(localStorage.getItem("truck")){
 
-                $(".truck").html("190");
-                truck = 190;
+                    $(".truck-block").show();
+                    $(".truck").html(data.truck_fee);
+                    truck = parseFloat(data.truck_fee);
 
-            }else{
+                }else{
 
-                $(".truck-block").fadeOut();
-                $(".truck").html("0");
-                truck = 0;
+                    $(".truck-block").hide();
+                    $(".truck").html(data.truck_fee);
+                    truck = parseFloat(data.truck_fee);
 
-            }
+                }
 
-            var travel = hours * 20;
-            var estimate = crew * hours * 35
-            total = travel + estimate + truck;
+                var travel = parseFloat(data.travel_fee);
+                var estimate = parseFloat(data.mover_fee);
 
-            $(".travle").html(travel);
-            $(".estimate").html(estimate);
-            $(".total").html(total);
+                $(".travle").html(travel);
+                $(".estimate").html(estimate);
+
+            });
+
+            $(".btn-menu-link").on("click", function(){
+
+                localStorage.setItem("anterior", localStorage.getItem("anterior") + "-resumeView");
+
+            });
+
+            $(".nxt-btn").on("click", function(){
+
+                localStorage.setItem("anterior", localStorage.getItem("anterior") + "-resumeView");
+
+                app.movingPaymentView();
+
+            });
+
+            $(".back").on("click", function(){
+
+                app.goBack();
+
+            });
 
         });
 
-        $(".btn-menu-link").on("click", function(){
-
-            localStorage.setItem("anterior", localStorage.getItem("anterior") + "-resumeView");
-
-        });
-
-        $(".nxt-btn").on("click", function(){
-
-            localStorage.setItem("anterior", localStorage.getItem("anterior") + "-resumeView");
-
-            app.movingPaymentView();
-
-        });
-
-        $(".back").on("click", function(){
-
-            app.goBack();
-
-        });
     },
 
     successView: function(){

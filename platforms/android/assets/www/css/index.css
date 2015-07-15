@@ -519,7 +519,7 @@ h1 {
     font-size: 22px;
     padding: 25px;
     display: block;
-    width: 50%;
+    width: 100%;
     text-transform: uppercase;
     text-align: center;
     color: #ffffff;
@@ -534,13 +534,6 @@ h1 {
 .open > .dropdown-toggle.first-view {
     color: #fff;
     border-color: #ffffff;
-}
-
-.btn-first-view.signup {
-
-    /*background-color: #1dbb9c;*/
-    background-color: #EE7125;
-
 }
 
 .btn-first-view.login {
@@ -697,6 +690,15 @@ input[type="time"] {
 
     font-family: dinn;
     text-align: center;
+    font-size: 15px;
+
+}
+
+.signup {
+
+    /*background-color: #1dbb9c;
+    background-color: #EE7125;*/
+    font-family: dinn;
 
 }
 

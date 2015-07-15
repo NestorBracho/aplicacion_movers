@@ -29,7 +29,7 @@
     <splash density="port-mdpi" src="www/img/android/screen/768x1024.png" />
     <splash density="port-hdpi" src="www/img/android/screen/1280x2272.png" />
     <splash density="port-xhdpi" src="www/img/android/screen/1536x2048.png" />
-    <name>Movers</name>
+    <name>MuvEasy</name>
     <preference name="DisallowOverscroll" value="true" />
     <preference name="stay-in-webview" value="false" />
     <preference name="orientation" value="portrait" />

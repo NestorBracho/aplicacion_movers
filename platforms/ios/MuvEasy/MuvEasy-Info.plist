@@ -49,7 +49,7 @@
       </dict>
     </dict>
     <key>CFBundleIdentifier</key>
-    <string>com.turpialdev.movers</string>
+    <string>com.muveasy.client</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
@@ -190,6 +190,12 @@
     <string>Movers</string>
     <key>CFBundleURLTypes</key>
     <array>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>fb722275631187565</string>
+        </array>
+      </dict>
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
